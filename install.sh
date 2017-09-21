@@ -1,6 +1,6 @@
 # Script to install driverless AI from H2O
 # Usage
-#        wget https://gist.github.com/shadiakiki1986/71f49c4051b68a2a9d6e449b62d00a8e/raw/install-as-root.sh -O -|sudo /bin/sh
+#        wget https://gist.github.com/shadiakiki1986/71f49c4051b68a2a9d6e449b62d00a8e/raw/install.sh -O -|sudo /bin/sh
 #
 # Requirements
 #        needs to be used with sudo to run
