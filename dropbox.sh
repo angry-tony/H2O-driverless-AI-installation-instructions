@@ -1,5 +1,7 @@
 # Note 1: At the step of installing dropbox, open link displayed in screen to link your dropbox account
 # for convenience, link the driverless AI folders to a dropbox folder
+# This script is not meant to be run automatically in one shot
+# Instead, run it manually one step at a time, modifying steps as needed
 #############################
 
 # install requirements for dropbox headless for convenience to upload files into driverless AI
@@ -18,13 +20,18 @@ chown ubuntu:ubuntu /mnt/ec2vol -R
 
 # This is where the prompt in Note 1 will show up
 # move dropbox folder to /mnt/ec2vol
-dropbox start -i && dropbox stop
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+~/.dropbox-dist/dropboxd # manually click the link, when done linking the account, press Ctrl+C to terminate
+dropbox start
+watch dropbox status # wait till it starts syncing, then do dropbox stop
 mv ~/Dropbox /mnt/ec2vol/Dropbox
 ln -s /mnt/ec2vol/Dropbox ~/Dropbox
 
-# check status downloading
-sleep 10 && dropbox status
+# At this step, make sure no files get "deleted" by dropbox unintentionally
+# If it happens, log into the web interface, click "show deleted files", select them, and click "restore"
+dropbox start 
 
+# link the dropbox folder to the /var/lib/h2o-driverless-ai folder that will be mount into the docker image
 mkdir ~/Dropbox/Shadi_Datasets/h2o-driverless-ai/{mkdir,log,license}
 cd /var/lib
 sudo mv driverless-ai-dir driverless-ai-dir.bkp
