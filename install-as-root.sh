@@ -1,5 +1,6 @@
 # script that needs to be used with sudo to run
-##################################################
+# e.g. wget https://gist.github.com/shadiakiki1986/71f49c4051b68a2a9d6e449b62d00a8e/raw/355cf7d409f519504306cc96984ecbdd34eb9cad/install-as-root.sh -O -|sudo /bin/sh
+######################################################################################################################################################################
 
 # install docker
 # prepend h2o's documentation with getting the docker's official gpg key
