@@ -1,5 +1,7 @@
 # script that needs to be used with sudo to run
 # e.g. wget https://gist.github.com/shadiakiki1986/71f49c4051b68a2a9d6e449b62d00a8e/raw/install-as-root.sh -O -|sudo /bin/sh
+# Note: permalink from
+# https://gist.github.com/atenni/5604615
 ######################################################################################################################################################################
 
 export DEBIAN_FRONTEND=noninteractive
