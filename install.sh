@@ -4,8 +4,9 @@
 #
 # Requirements
 #        needs to be used with sudo to run
-#        minimum disk space 8GB
+#        minimum free disk space 13 GB
 #        ubuntu 16 or 17
+#        A dropbox account for simplifying of uploading files into driverless AI's data folder
 #
 # Note: permalink from https://gist.github.com/atenni/5604615
 ######################################################################################################################################################################
@@ -44,5 +45,9 @@ rm /tmp/nvidia-docker*.deb
 # download the driverless ai docker image (2GB)
 wget -P /tmp https://s3-us-west-2.amazonaws.com/h2o-internal-release/docker/driverless-ai-docker-runtime-rel-0.8.2.gz
 # load it in docker (slow command)
+sleep 1 # is this necessary for the wget to move the file to /tmp ? Not sure
 docker load < /tmp/driverless-ai-docker-runtime-rel-*.gz
 rm /tmp/driverless-ai-docker-runtime-rel-*.gz
+
+# prepare folders
+mkdir /var/lib/h2o-driverless-ai/{data,log,license}
