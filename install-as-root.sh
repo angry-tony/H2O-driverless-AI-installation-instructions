@@ -4,6 +4,7 @@
 # https://gist.github.com/atenni/5604615
 ######################################################################################################################################################################
 
+set -e
 export DEBIAN_FRONTEND=noninteractive
 
 # install docker
@@ -28,3 +29,14 @@ add-apt-repository \
 apt-get -qq -y update
 apt-get -qq -y install docker-ce
 docker run hello-world
+
+# Install nvidia-docker
+wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb
+dpkg -i /tmp/nvidia-docker*.deb
+rm /tmp/nvidia-docker*.deb
+
+# download the driverless ai docker image (2GB)
+wget -P /tmp https://s3-us-west-2.amazonaws.com/h2o-internal-release/docker/driverless-ai-docker-runtime-rel-0.8.2.gz
+# load it in docker (slow command)
+docker load < /tmp/driverless-ai-docker-runtime-rel-*.gz
+rm /tmp/driverless-ai-docker-runtime-rel-*.gz
