@@ -2,12 +2,14 @@
 # e.g. wget https://gist.github.com/shadiakiki1986/71f49c4051b68a2a9d6e449b62d00a8e/raw/355cf7d409f519504306cc96984ecbdd34eb9cad/install-as-root.sh -O -|sudo /bin/sh
 ######################################################################################################################################################################
 
+export DEBIAN_FRONTEND=noninteractive
+
 # install docker
 # prepend h2o's documentation with getting the docker's official gpg key
 # https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#os-requirements
-apt-get remove docker docker-engine docker.io
-apt-get update
-apt-get install \
+apt-get -qq -y remove docker docker-engine docker.io
+apt-get -qq -y update
+apt-get -qq -y install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -21,6 +23,6 @@ add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
-apt-get update
-apt-get install docker-ce
+apt-get -qq -y update
+apt-get -qq -y install docker-ce
 docker run hello-world
