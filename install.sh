@@ -37,7 +37,7 @@ apt-get -qq -y update
 apt-get -qq -y install docker-ce
 docker run hello-world
 
-# Install nvidia-docker
+# Install nvidia-docker. Required only if GPU is used
 wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb
 dpkg -i /tmp/nvidia-docker*.deb
 rm /tmp/nvidia-docker*.deb
@@ -50,4 +50,7 @@ docker load < /tmp/driverless-ai-docker-runtime-rel-*.gz
 rm /tmp/driverless-ai-docker-runtime-rel-*.gz
 
 # prepare folders
-mkdir /var/lib/h2o-driverless-ai/{data,log,license}
+mkdir -p /var/lib/h2o-driverless-ai/{data,log,license}
+
+# without this, the nvidia-docker run... below would fail
+sudo apt-get -qq -y install nvidia-modprobe

@@ -25,4 +25,8 @@ ln -s /mnt/ec2vol/Dropbox ~/Dropbox
 # check status downloading
 sleep 10 && dropbox status
 
-/mnt/ec2vol/Dropbox/Shadi_Datasets/driverless-ai-dir$ mkdir log license
+mkdir ~/Dropbox/Shadi_Datasets/h2o-driverless-ai/{mkdir,log,license}
+cd /var/lib
+sudo mv driverless-ai-dir driverless-ai-dir.bkp
+sudo ln -s ~/Dropbox/Shadi_Datasets/h2o-driverless-ai/ .
+cd -
