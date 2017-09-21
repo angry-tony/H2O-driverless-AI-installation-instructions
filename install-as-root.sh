@@ -1,7 +1,13 @@
-# script that needs to be used with sudo to run
-# e.g. wget https://gist.github.com/shadiakiki1986/71f49c4051b68a2a9d6e449b62d00a8e/raw/install-as-root.sh -O -|sudo /bin/sh
-# Note 1: permalink from https://gist.github.com/atenni/5604615
-# Note 2: Requires minimum disk space 8GB
+# Script to install driverless AI from H2O
+# Usage
+#        wget https://gist.github.com/shadiakiki1986/71f49c4051b68a2a9d6e449b62d00a8e/raw/install-as-root.sh -O -|sudo /bin/sh
+#
+# Requirements
+#        needs to be used with sudo to run
+#        minimum disk space 8GB
+#        ubuntu 16 or 17
+#
+# Note: permalink from https://gist.github.com/atenni/5604615
 ######################################################################################################################################################################
 
 set -e
