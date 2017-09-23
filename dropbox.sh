@@ -22,7 +22,20 @@ sudo chown ubuntu:ubuntu /mnt/ec2vol -R
 # move dropbox folder to /mnt/ec2vol
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 ~/.dropbox-dist/dropboxd # manually click the link, when done linking the account, press Ctrl+C to terminate
+
+# selective sync
+# http://rkulla.blogspot.com/2014/03/headless-dropbox.html
+dropbox exclude add "AEE-Office"
+dropbox exclude add "AEE-Stores"
+dropbox exclude add "Akiki VHS"
+dropbox exclude add "Lebanon2014_Jim"
+
+# start again
 dropbox start
+
+#------------------------------------------------------------------------------------
+# migrate an existing dropbox folder
+# NOT SURE IF THIS WORKS. HAVE FAILED EVERYTIME SO FAR
 watch dropbox status # wait till it starts syncing, then do dropbox stop
 mv ~/Dropbox /mnt/ec2vol/Dropbox
 ln -s /mnt/ec2vol/Dropbox ~/Dropbox
@@ -31,6 +44,7 @@ ln -s /mnt/ec2vol/Dropbox ~/Dropbox
 # If it happens, log into the web interface, click "show deleted files", select them, and click "restore"
 dropbox start 
 
+#------------------------------------------------------------------------------------
 # link the dropbox folder to the /var/lib/h2o-driverless-ai folder that will be mount into the docker image
 mkdir ~/Dropbox/Shadi_Datasets/h2o-driverless-ai/{mkdir,log,license}
 cd /var/lib
