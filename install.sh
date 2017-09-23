@@ -42,6 +42,9 @@ wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nv
 dpkg -i /tmp/nvidia-docker*.deb
 rm /tmp/nvidia-docker*.deb
 
+# without this, the nvidia-docker run... below would fail
+apt-get -qq -y install nvidia-modprobe
+
 # download the driverless ai docker image (2GB)
 wget -P /tmp https://s3-us-west-2.amazonaws.com/h2o-internal-release/docker/driverless-ai-docker-runtime-rel-0.8.2.gz
 # load it in docker (slow command)
@@ -51,6 +54,3 @@ rm /tmp/driverless-ai-docker-runtime-rel*.gz
 
 # prepare folders
 mkdir -p /var/lib/h2o-driverless-ai/{data,log,license}
-
-# without this, the nvidia-docker run... below would fail
-sudo apt-get -qq -y install nvidia-modprobe
