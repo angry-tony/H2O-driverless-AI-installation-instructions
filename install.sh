@@ -1,6 +1,6 @@
 # Script to install driverless AI from H2O
 # Usage
-#        wget https://gist.github.com/shadiakiki1986/71f49c4051b68a2a9d6e449b62d00a8e/raw/install.sh -O -|sudo /bin/sh
+#        wget https://gist.github.com/shadiakiki1986/71f49c4051b68a2a9d6e449b62d00a8e/raw/install.sh -O -|sudo bash
 #
 # Requirements
 #        needs to be used with sudo to run
@@ -46,7 +46,7 @@ rm /tmp/nvidia-docker*.deb
 wget -P /tmp https://s3-us-west-2.amazonaws.com/h2o-internal-release/docker/driverless-ai-docker-runtime-rel-0.8.2.gz
 # load it in docker (slow command)
 sleep 1 # is this necessary for the wget to move the file to /tmp ? Not sure
-docker load < /tmp/driverless-ai-docker-runtime-rel*.gz # <<< does this only work with bash?
+docker load < /tmp/driverless-ai-docker-runtime-rel*.gz # <<< does this only work with bash and not /bin/sh?
 rm /tmp/driverless-ai-docker-runtime-rel*.gz
 
 # prepare folders
