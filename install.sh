@@ -7,6 +7,7 @@
 #        minimum free disk space 13 GB
 #        ubuntu 16 or 17
 #        A dropbox account for simplifying of uploading files into driverless AI's data folder
+#        Adds the user "ubuntu" to the docker group to be able to run docker without sudo
 #
 # Note: permalink from https://gist.github.com/atenni/5604615
 ######################################################################################################################################################################
@@ -36,6 +37,9 @@ add-apt-repository \
 apt-get -qq -y update
 apt-get -qq -y install docker-ce
 docker run hello-world
+
+# add user to docker group
+gpasswd -a ubuntu docker
 
 # Install nvidia-docker. Required only if GPU is used
 wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb
